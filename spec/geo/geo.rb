@@ -1,10 +1,13 @@
+require_relative '../spec_helper.rb'
 $: << File.dirname(__FILE__) + "/../../../lib/"
 
 describe "events for san francisco" do
 
 	before(:all) do #We only want to hit the webservice once.
-		@geo = Scrobbler2::Geo.new(:location => "San Francisco",:page=>2,:limit=>10)
-		@events = @geo.events
+		wait 30 do
+			@geo    = Scrobbler2::Geo.new(:location => "San Francisco", :page => 2, :limit => 10)
+			@events = @geo.events
+		end
 	end
 
 	it "should be hash" do

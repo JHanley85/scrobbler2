@@ -10,6 +10,7 @@ module Scrobbler2
      has_resource :friends, :root => "friends"
      has_resource :loved_tracks, :root => "lovedtracks"
      has_resource :neighbours, :root => "neighbours"
+     has_resource :new_releases, :root=>"newreleases"
      has_resource :past_events, :root => "events"
      has_resource :playlists, :root => "playlists"
      has_resource :recent_tracks, :root => "recenttracks"

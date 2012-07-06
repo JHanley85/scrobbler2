@@ -6,6 +6,7 @@ module Scrobbler2
     end
     
      has_resource :info, :root => 'album'
-   
+
+
   end
 end
