@@ -17,5 +17,8 @@ module Scrobbler2
 		has_resource :events, :root => "events"
 		has_resource :top_artists, :root => "topartists"
 		has_resource :top_tracks, :root => "toptracks"
+
+
 	end
+
 end
