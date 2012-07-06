@@ -8,7 +8,7 @@ begin
     s.description = "A ruby library for accessing the last.fm v2 webservices"
     s.authors = ["Gareth Andrew","Kurt Schrader"]
     s.add_dependency "httparty", ">= 0.2.2"
-    s.add_dependency "activesupport"
+    s.add_dependency "active_support"
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
