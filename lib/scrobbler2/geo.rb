@@ -1,8 +1,8 @@
 module Scrobbler2
   class Geo < Base
     
-    def initialize()
-      @query = {}#TODO eg. {:artist => artist, :track => track}
+    def initialize(location)
+      @query = {:location=>location}#TODO eg. {:artist => artist, :track => track}
     end
     
      has_resource :events, :root => "events"
