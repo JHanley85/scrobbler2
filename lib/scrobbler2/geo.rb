@@ -17,6 +17,14 @@ module Scrobbler2
 		has_resource :events, :root => "events"
 		has_resource :top_artists, :root => "topartists"
 		has_resource :top_tracks, :root => "toptracks"
+		has_resource :metro_artist_chart, :root => "topartists"
+		has_resource :metro_hype_artist_chart, :root => "topartists"
+		has_resource :metro_hype_track_chart, :root => "toptracks"
+		has_resource :metro_track_chart, :root => "toptracks"
+		has_resource :metro_unique_artist_chart, :root=>"topartists"
+		has_resource :metro_unique_track_chart, :root=>"toptracks"
+		has_resource :metro_weekly_chartlist, :root=>"weeklychartlist"
+		has_resource :metros,:root=>"metros"
 
 
 	end
