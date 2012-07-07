@@ -7,7 +7,6 @@ module Scrobbler2
 		def self.get(method, query={ }, options={ })
 			query   = query.merge({ :api_key => api_key, :method => method, :format => 'json' })
 			options = options.merge({ :query => query })
-
 			response = HTTParty.get('http://ws.audioscrobbler.com/2.0/', options)
 		end
 
@@ -31,6 +30,7 @@ module Scrobbler2
 					value = self.class.get(method_name, query, local_options)
 				end
 				value = value[options[:root]] if options[:root]
+				value['attr']=value['@attr']
 				value=Scrobbler2::Base.hashes2ostruct(value)
 				instance_variable_set("@#{name}", value)
 			end
@@ -38,18 +38,13 @@ module Scrobbler2
 
 		# TODO this needs to be DRYed up, wrt has_resource
 		def self.has_singleton_resource(name, options={ })
-			(
-			class << self;
-				self;
-			end).class_eval do
+			(class << self;self;end).class_eval do
 				define_method(name) do |*args|
 					query         = args[1] || { }
 					local_options = args[0] || { }
 					local_value   = instance_variable_get("@#{name.to_s}")
 					return local_value if local_value && !options[:force]
-
 					query.merge!(options[:query]) if options[:query]
-
 					method_name = options[:resource_name] || self.name.split("::").last.downcase + ".get#{name.to_s.tr('_', '').downcase}"
 					if options[:auth]
 						value = self.get_with_auth(method_name, query, local_options)
@@ -97,7 +92,6 @@ module Scrobbler2
 			signature = "#{signature}#{api_secret}"
 			signature
 		end
-
 
 		def self.hashes2ostruct(object)
 			return case object
