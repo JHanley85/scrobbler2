@@ -29,4 +29,18 @@ describe "Artist information for 4c5157ad-7832-4aec-9412-97aaa1a08ba6 (Honeycut)
 		@toptracks.should be_a_kind_of OpenStruct
 
 	end
+	it "should have current events" do
+		if @events.attr.nil? #Check for 'not touring'
+			@events.total.should == "0"
+			@events.page.should =="0"
+			@events.perPage.should == "50"
+			@events.totalPages.should =="0"
+			@events.festivalsonly.should =="0"
+			@events.totalPages.should =="0"
+			@events.event.should be_nil
+		else
+			@events.attr.total.should == @events.event.count
+		end
+
+	end
 end
