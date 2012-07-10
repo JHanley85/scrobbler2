@@ -7,6 +7,9 @@ module Scrobbler2
     
      has_resource :events, :root => "events"
      has_resource :past_events, :root => "events"
-   
+
+    def search
+
+    end
   end
 end

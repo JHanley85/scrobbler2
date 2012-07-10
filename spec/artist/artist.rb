@@ -43,4 +43,14 @@ describe "Artist information for 4c5157ad-7832-4aec-9412-97aaa1a08ba6 (Honeycut)
 		end
 
 	end
+	it "should be able to post and remove tags" do
+		if @name.tags.nil?
+			@name.add_tags('electronic')
+			@name=Scrobbler2::Artist.new(:artist => "Honeycut")
+			@name.tags.tag.name.should == 'electronic'
+			@name.remove_tag('electronic')
+			@name=Scrobbler2::Artist.new(:artist => "Honeycut")
+			@name.tags.tag.should== nil
+		end
+	end
 end

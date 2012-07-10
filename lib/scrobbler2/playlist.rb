@@ -6,5 +6,12 @@ module Scrobbler2
     end
     
      has_resource :fetch, :root => 'playlist', :resource_name => 'playlist.fetch'
+
+    def create
+
+    end
+    def add_track
+
+    end
   end
 end
