@@ -10,7 +10,9 @@ module Scrobbler2
 						raise "#{option} is an unacceptable option for Geo"
 					end
 					@query[option]=value
-				end
+        end
+      else
+        raise "You must provide at least a :location"
 			end
 		end
 

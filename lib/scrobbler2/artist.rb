@@ -2,15 +2,17 @@ module Scrobbler2
 	class Artist < Base
 
 		def initialize(options)
-			acceptable_options=[:artist, :mbid, :lang, :autocorrect, :username]
-			unless options.nil?
+			acceptable_options=[:artist, :mbid, :lang, :autocorrect, :username, :page, :limit]
+			if options.present? && options.kind_of?(Hash)
 				@query=Hash.new
 				options.each_pair do |option, value|
 					unless acceptable_options.include?(option)
-						raise "#{option} is an unacceptable option for Geo"
+						raise "#{option} is an unacceptable option for Artist"
 					end
 					@query[option]=value
-				end
+        end
+      else
+        raise "You must provide a Hash with at minimum :artist, or :mbid."
 			end
 		end
 
@@ -34,7 +36,7 @@ module Scrobbler2
 			tags=tag_array.count>10 ? tag_array.first(10).join(",") : tag_array.join(',')
 			artist=self.info.name
 			query=Hash.new().merge(:artist=>artist).merge(:tags=>tags)
-			self.class.post_with_auth("artist.addTags", query)
+			self.class.post_with_auth("artist.addtags", query)
 		end
 
 		def search(query, options={ })
@@ -52,7 +54,7 @@ module Scrobbler2
 			artist=self.info.name
 			tag=tag.split(",").first.to_s
 			query=Hash.new().merge(:artist=>artist).merge(:tag=>tag)
-			self.class.post_with_auth("artist.removeTag", query)
+			self.class.post_with_auth("artist.removetag", query)
 		end
 	end
 end

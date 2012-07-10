@@ -1,5 +1,5 @@
 module Scrobbler2
-  class Radio
+  class Radio < Base
     def initialize
 
     end

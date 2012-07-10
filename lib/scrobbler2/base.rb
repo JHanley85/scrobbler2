@@ -10,7 +10,7 @@ module Scrobbler2
       response = HTTParty.get('http://ws.audioscrobbler.com/2.0/', options)
     end
 
-    def self.has_resource(name, options = {})
+    def self.has_resource(name, options = Hash.new)
       define_method name do |*args|
         query = args[1] || {}
         local_options = args[0] || {}
@@ -59,7 +59,7 @@ module Scrobbler2
 
     #implements signed requests
     def self.get_with_auth(method, query={}, options={})
-      http_with_auth(:get, method, query, options)["lfm"]
+      http_with_auth(:get, method, query, options)
     end
 
     def self.http_with_auth(http_method, method, query={}, options={})

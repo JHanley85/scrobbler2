@@ -1,5 +1,5 @@
 module Scrobbler2
-  class Tasteometer
+  class Tasteometer < Base
 
     def initialize
 
