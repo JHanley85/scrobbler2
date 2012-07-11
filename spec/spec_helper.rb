@@ -36,3 +36,4 @@ def wait(time, increment = 5, elapsed_time = 0, &block)
 		end
 	end
 end
+

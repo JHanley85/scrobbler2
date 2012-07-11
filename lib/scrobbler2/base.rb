@@ -99,7 +99,7 @@ module Scrobbler2
                  obj=Hash.new
                  object.each_pair do |k,v|
                    h=Hash.new
-                   if k.to_s.include?("#") || k.to_s.include("@")
+                   if k.to_s.include?("#") || k.to_s.include?("@")
                      key=k.to_s.gsub(/[#|@]/, "").to_sym
                      h[key]=v
                      obj.merge!(h)
