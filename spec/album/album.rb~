@@ -18,8 +18,8 @@ describe "album information for 'The Day I Turned To Glass' by 'Honeycut'." do
     @tags=@album.tags
     @tags_file=File.open(@file,"w+").write(@tags)
     @file="#{@file_path}/top_tags.log"
-    @toptags=@album.top_tags
-    @top_tags_file=File.open(@file,"w+").write(@toptags)
+    @top_tags=@album.top_tags
+    @top_tags_file=File.open(@file,"w+").write(@top_tags)
   end
 
   it "should be openstruct" do
