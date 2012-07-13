@@ -1,7 +1,7 @@
 require_relative '../spec_helper.rb'
 $: << File.dirname(__FILE__) + "/../../../lib/"
 
-describe "Album.shouts" do
+describe "Album.info" do
   before(:all) do
   @shouts=Scrobbler2::Album.new(:artist=>"Honeycut",:album=>"The Day I Turned To Glass").shouts
   end
